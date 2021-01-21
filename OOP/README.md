@@ -1,6 +1,6 @@
 Основные учебные задачи реализованные на принципы OOP:
 
-1.Используя Visual Studio, создайте проект по шаблону Console Application.
+1. Используя Visual Studio, создайте проект по шаблону Console Application.
 Требуется: Создать класс с именем Address.
 В теле класса требуется создать поля: index, country, city, street, house, apartment. Для каждого
 поля, создать свойство с двумя методами доступа.
@@ -10,4 +10,4 @@
 Ссылка на код проекта: https://github.com/SergKredo/ITVDN-Csharp_Essential_MyProjects/blob/master/Lesson1_Homework/AdditionalTask/Program.cs
 
 
-2.
+2. 

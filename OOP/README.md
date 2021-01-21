@@ -8,6 +8,7 @@
 Создать экземпляр класса Address.
 В поля экземпляра записать информацию о почтовом адресе.
 Выведите на экран значения полей, описывающих адрес.
+
 Ссылка на код проекта: https://github.com/SergKredo/ITVDN-Csharp_Essential_MyProjects/blob/master/Lesson1_Homework/AdditionalTask/Program.cs
 
 

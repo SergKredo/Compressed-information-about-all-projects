@@ -1,6 +1,6 @@
 Основные проекты учебного курса C#./Net developer, реализованные по технологии Async&Await:
 
-1. Десктопные версии приложений: "File change tracking NT-service by Serg Kredo", "Currency Info by Serg Kredo", "Choper by Serg Kredo".
+1. Десктопные версии приложений реализованы с использованием Async&Await программирования: "File change tracking NT-service by Serg Kredo", "Currency Info by Serg Kredo", "Choper by Serg Kredo".
 
 2. Переделайте дополнительное задание из урока №11 с использованием конструкции async&await
 Код проекта: https://github.com/SergKredo/ITVDN-Csharp_Professional_MyProjects/blob/master/Lesson15/Additional%20Task/Program.cs

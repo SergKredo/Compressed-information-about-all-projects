@@ -1,1 +1,19 @@
+Основные проекты учебного курса C#./Net developer, реализованные по технологии Regular Expressions:
 
+1. Приложение позволяет по указанному адресу web-страницы выбирать все ссылки на другие страницы, находить номера телефонов, почтовые адреса и сохранять полученный результат в файл. 
+Код проекта: https://github.com/SergKredo/ITVDN-Csharp_Professional_MyProjects/blob/master/Lesson4/Task2/Program.cs
+
+2. Напишите консольное приложение, позволяющие пользователю зарегистрироваться под
+«Логином», состоящем только из символов латинского алфавита, и пароля, состоящего из
+цифр и символов.
+Код проекта: https://github.com/SergKredo/ITVDN-Csharp_Professional_MyProjects/blob/master/Lesson4/Additional%20Task/Program.cs
+
+3. Напишите шуточную программу «Дешифратор», которая бы в текстовом файле могла бы
+    заменить все предлоги на слово «ГАВ!».
+Код проекта: https://github.com/SergKredo/ITVDN-Csharp_Professional_MyProjects/blob/master/Lesson4/Task3/Program.cs
+
+4. Создайте текстовый файл-чек по типу «Наименование товара – 0.00 (цена) грн.» с
+определенным количеством наименований товаров и датой совершения покупки. Выведите на
+экран информацию из чека в формате текущей локали пользователя и в формате локали en-
+US.
+Код проекта: https://github.com/SergKredo/ITVDN-Csharp_Professional_MyProjects/blob/master/Lesson4/Task4/Program.cs

@@ -73,3 +73,15 @@
 13. Используя Visual Studio, создайте проект по шаблону Console Application. Требуется: Создайте класс DocumentWorker. В теле класса создайте три метода OpenDocument(), EditDocument(), SaveDocument(). тело каждого из методов добавьте вывод на экран соответствующих строк: "Документ открыт", "Редактирование документа доступно в версии Про", "Сохранение документа доступно в версии Про". Создайте производный класс ProDocumentWorker. Переопределите соответствующие методы, при переопределении методов выводите следующие строки: "Документ отредактирован", "Документ сохранен в старом формате, сохранение в остальных форматах доступно в версии Эксперт". Создайте производный класс ExpertDocumentWorker от базового класса ProDocumentWorker. Переопределите соответствующий метод. При вызове данного метода необходимо выводить на экран "Документ сохранен в новом формате". В теле метода Main() реализуйте возможность приема от пользователя номера ключа доступа pro и exp. Если пользователь не вводит ключ, он может пользоваться только бесплатной версией (создается экземпляр базового класса), если пользователь ввел номера ключа доступа pro и exp, то должен создаться экземпляр соответствующей версии класса, приведенный к базовому – DocumentWorker.
 Ссылка на код проекта: https://github.com/SergKredo/ITVDN-Csharp_Essential_MyProjects/tree/master/Lesson%203_HomeWork/Task4
 
+
+14. Используя Visual Studio, создайте проект по шаблону Console Application. Требуется: Изменить 12 пример первого урока (работа с документом) и создать общий абстрактный класс для всех частей документа.
+Ссылка на код проекта: https://github.com/SergKredo/ITVDN-Csharp_Essential_MyProjects/tree/master/Lesson4_Homework/Lesson4_Homework
+
+
+15. Используя Visual Studio, создайте проект по шаблону Console Application. Требуется: Создайте класс AbstractHandler. В теле класса создать методы void Open(), void Create(), void Chenge(), void Save(). Создать производные классы XMLHandler, TXTHandler, DOCHandler от базового класса AbstractHandler. Написать программу, которая будет выполнять определение документа и для каждого формата должны быть методы открытия, создания, редактирования, сохранения определенного формата документа.
+Ссылка на код проекта: https://github.com/SergKredo/ITVDN-Csharp_Essential_MyProjects/tree/master/Lesson4_Homework/Task2
+
+
+16. Используя Visual Studio, создайте проект по шаблону Console Application. Требуется: Создайте 2 интерфейса IPlayable и IRecodable. В каждом из интерфейсов создайте по 3 метода void Play() / void Pause() / void Stop() и void Record() / void Pause() / void Stop() соответственно. Создайте производный класс Player от базовых интерфейсов IPlayable и IRecodable. Написать программу, которая выполняет проигрывание и запись.
+Ссылка на код проекта: https://github.com/SergKredo/ITVDN-Csharp_Essential_MyProjects/tree/master/Lesson4_Homework/Task3
+

@@ -21,4 +21,8 @@
 Код проекта: https://github.com/SergKredo/Calculator-as-Windows10/blob/master/Presenter.cs
 
 
+6. Создайте приложение WindowsForms, которое позволит безопасно запускать сборки. В интерфейсе предусмотрите возможность выбора ограничения привилегий для запускаемой сборки. Возможность запускать сборки в домене. Выполнение сборки ограничено правами доступа.
+Код проекта: https://github.com/SergKredo/ITVDN-Csharp_Professional_MyProjects/blob/master/Lesson16/Additional%20Task/Form1.cs
+
+
 

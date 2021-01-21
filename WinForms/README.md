@@ -5,3 +5,12 @@
 
 2. Новый улучшенный релиз десктопной версии приложения "Reflector by Serg Kredo" с возможностью выбора типов сборки, членов типа и информации об атрибутах типов и членов типа.
 Код проекта: https://github.com/SergKredo/ITVDN-Csharp_Professional_MyProjects/blob/master/Lesson7/Task%203_New%20Reflector/Form1.cs
+
+
+3. Создание программы конвертера температуры в Windows Forms. Конвертер температуры автоматически делает пересчет в градусы Цельсия, Фаренгейты и Кельвин. В приложении пользователю предоставлен доступ к сборке в корне папки Debug приложения. В этом приложении используется механизм позднего связывания при создании экземпляра объекта с использованием только рефлексии.
+Приложение: https://github.com/SergKredo/ITVDN-Csharp_Professional_MyProjects/blob/master/Lesson6/Task4_converter/ConverterTemperature.rar
+Код проекта: https://github.com/SergKredo/ITVDN-Csharp_Professional_MyProjects/blob/master/Lesson6/Task4_converter/Form1.cs
+
+
+4. 
+

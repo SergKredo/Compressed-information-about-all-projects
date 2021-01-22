@@ -1,0 +1,113 @@
+
+                           %Расчеты весовых и объемных концентраций
+                           %компонент суспензии, в которую могут входить:
+                           %жидкий кристалл + суспензия нанокристаллита
+                           %красителя в додекане(нанокристаллит красителя
+                           %RED176 + додекан суспензии) +
+                           %поверхностно-активное вещество Solsperse 11200
+                           %(S11200) + додекан добавленный (внешний, не
+                           %суспензии);
+                      
+
+
+
+
+
+function RED176_full_boil_magnetic_particles
+format short
+R=0.2 % Первоначальная весовая концентрация нанокристаллита красителя Red 176 в додекане
+K=0.262 %Первоначальная весовая концентрация магнитных частичек  в растворе APB935 в додекане
+mAPBdod=0.0221 %Вес магнитной жидкости APB935 в додекане
+mAPB935=K*mAPBdod %Вес магнитных частичек с павом
+mdodapb=0%mAPBdod-mAPB935 %Вес додекана в магнитной жидкости
+mR=0.0193 % Масса раствора Red 176+додекан, который мы добавляем в жидкий кристалл 6CHBT
+mR_boil=0.005404 % Вес раствора Red 176, после выпаривания додекана
+P=0.4; % Первоначальная весовая концентрация поверхностно-активного вещества S11200 от веса нанокристаллита красителя
+mRED176=R*mR  % Вес нанокристаллита красителя в суспензии красителя
+mSS=(R*mR)*P   % Вес связанного поверхностно-активного вещества S11200 в суспензии красителя
+mDOD=(mR-(mRED176+mSS)) % Вес додекана в суспензии красителя
+P=1.4; %Коэффициент
+mRED176_boil=mRED176%mR_boil/1.4  % Вес нанокристаллита красителя после выпаривания и забора капилляром
+mDOD_boil=(mR_boil-(mRED176+mSS)) % Вес додекана в процессе выпаривания суспензии красителя
+mSS_boil=mR_boil-mRED176_boil-mDOD_boil  % Вес поверхностно-активного вещества S11200 в процессе выпаривания суспензии красителя
+mRED176_S11200=mRED176+mSS % Вес нанокристаллита красителя и S11200 в растворе при полном выпаривании додекана
+mR_recal=mRED176+mSS+mDOD   % Перепроверка веса раствора RED176, который мы добавляем в жидкий кристалл
+mR_recal_boil=mRED176_boil+mSS_boil+mDOD_boil   % Перепроверка веса раствора RED176, после выпаривания+забора капиляром
+mDODECAN=0  % Масса додекана добавленная
+mLC=0.1521 % Масса жидкого кристалла 6CHBT
+mS=0  %Масса поверхностно-активного вещества S11200
+mSUM=mRED176_boil+mSS_boil+mDOD_boil+mDODECAN+mLC+mS  % Вес всего коллоида после выпаривания и добавления веществ
+
+mK=0; % Средний вес коллоида, который мы забрали капиляром
+mSUMK=mSUM-mK  % Вес всего коллоида после забора капиляром части коллоида
+
+rRED=1.6; % Плотность нанокристаллита красителя Red 176
+rLC=1.04; % Плотность жидкого кристалла 6CHBT
+rDODECAN=0.75; % Плотность додекана
+rS= 0.685;  % Плотность поверхноcтно-активного вещества S11200
+rAPB935=5; % Плотность магнитных частичек APB935
+
+
+Ired176=((mRED176_boil)/(mLC+mR_boil+mS+mDODECAN+mAPB935+mdodapb))*100 % Весовая концентрация нанокристаллита красителя RED 176 в суспензии с додеканом, жидким кристаллом + поверхностно-активное вещество S11200 + додекан
+
+Xred176=(mRED176_boil/(((rRED*mLC)/rLC)+((rRED*mRED176_boil)/rRED)+((rRED*(mDOD_boil))/rDODECAN)+((rRED*mS)/rS)+((rRED*mSS_boil)/rS)+((rRED*mDODECAN)/rDODECAN)+((rRED*mAPB935)/rAPB935)+((rRED*mdodapb)/rDODECAN)))*100  %Объемная концентрация нанокристаллита красителя Red 176 в суспензии с додеканом, жидким кристаллом + поверхностно-активное вещество S11200 + додекан.
+
+
+IDOD=(((mDOD_boil))/(mLC+mR_boil+mS+mDODECAN+mAPB935+mdodapb))*100;  % Весовая концентрация додекана суспензии красителя в коллоиде
+
+XDOD=(((mDOD_boil))/(((rDODECAN*mLC)/rLC)+((rDODECAN*mRED176_boil)/rRED)+((rDODECAN*(mDOD_boil))/rDODECAN)+((rDODECAN*mS)/rS)+((rDODECAN*mSS_boil)/rS)+((rDODECAN*mDODECAN)/rDODECAN)+((rDODECAN*mAPB935)/rAPB935)+((rDODECAN*mdodapb)/rDODECAN)))*100;  % Объемная концентрация додекана суспензии красителя в коллоиде
+
+
+IDODECAN=((mDODECAN)/(mLC+mR_boil+mS+mDODECAN+mAPB935+mdodapb))*100; % Весовая концентрация додекана в суспензии с RED 176, жидким кристаллом + поверхностно-активное вещество S11200 + додекан добавленный
+
+XDODECAN=((mDODECAN)/(((rDODECAN*mLC)/rLC)+((rDODECAN*mRED176_boil)/rRED)+((rDODECAN*(mDOD_boil))/rDODECAN)+((rDODECAN*mS)/rS)+((rDODECAN*mSS_boil)/rS)+((rDODECAN*mDODECAN)/rDODECAN)+((rDODECAN*mAPB935)/rAPB935)+((rDODECAN*mdodapb)/rDODECAN)))*100;  %Объемная концентрация додекана в суспензии с RED 176, жидким кристаллом + поверхностно-активное вещество S11200 + додекан.
+
+
+
+
+Idodecan_sum=((mDODECAN+mDOD_boil)/(mLC+mR_boil+mS+mDODECAN+mAPB935+mdodapb))*100 % Весовая концентрация додекана в суспензии с RED 176, жидким кристаллом + поверхностно-активное вещество S11200 + додекан добавленный
+
+Xdodecan_sum=((mDODECAN+mDOD_boil)/(((rDODECAN*mLC)/rLC)+((rDODECAN*mRED176_boil)/rRED)+((rDODECAN*mDOD_boil)/rDODECAN)+((rDODECAN*mS)/rS)+((rDODECAN*mSS_boil)/rS)+((rDODECAN*mDODECAN)/rDODECAN)+((rDODECAN*mAPB935)/rAPB935)+((rDODECAN*mdodapb)/rDODECAN)))*100  %Объемная концентрация додекана в суспензии с RED 176, жидким кристаллом + поверхностно-активное вещество S11200 + додекан.
+
+
+
+ILC=((mLC)/(mLC+mR_boil+mS+mDODECAN+mAPB935+mdodapb))*100 % Весовая концентрация жидкого кристалла в суспензии с RED 176, додеканом суспензии + поверхностно-активное вещество S11200 + додекан добавленный
+
+XLC=(mLC/(((rLC*mLC)/rLC)+((rLC*mRED176_boil)/rRED)+((rLC*(mDOD_boil))/rDODECAN)+((rLC*mS)/rS)+((rLC*mSS_boil)/rS)+((rLC*mDODECAN)/rDODECAN)+((rLC*mAPB935)/rAPB935)+((rLC*mdodapb)/rDODECAN)))*100  %Объемная концентрация жидкого кристалла в суспензии с RED 176, додеканом суспензии + поверхностно-активное вещество S11200 + додекан добавленный.
+
+
+IS11200_sv=((mSS_boil)/(mLC+mR_boil+mS+mDODECAN+mAPB935+mdodapb))*100; % Весовая концентрация S11200 в суспензии с RED 176, додекан суспензии + жидким кристаллом + додекан добавленный
+
+XS11200_sv=((mSS_boil)/(((rS*mLC)/rLC)+((rS*mRED176_boil)/rRED)+((rS*(mDOD_boil))/rDODECAN)+((rS*mS)/rS)+((rS*mSS_boil)/rS)+((rS*mDODECAN)/rDODECAN)+((rS*mAPB935)/rAPB935)+((rS*mdodapb)/rDODECAN)))*100;  %Объемная концентрация S11200 в суспензии с RED 176, додекан суспензии + жидким кристаллом + додекан добавленный.
+
+
+IS11200=((mS)/(mLC+mR_boil+mS+mDODECAN+mAPB935+mdodapb))*100; % Весовая концентрация S11200 в суспензии с RED 176, додекан суспензии + жидким кристаллом + додекан добавленный
+
+XS11200=((mS)/(((rS*mLC)/rLC)+((rS*mRED176_boil)/rRED)+((rS*(mDOD_boil))/rDODECAN)+((rS*mS)/rS)+((rS*mSS_boil)/rS)+((rS*mDODECAN)/rDODECAN)+((rS*mAPB935)/rAPB935)+((rS*mdodapb)/rDODECAN)))*100; %Объемная концентрация S11200 в суспензии с RED 176, додекан суспензии + жидким кристаллом + додекан добавленный.
+
+
+
+
+IS11200_sum=((mSS_boil+mS)/(mLC+mR_boil+mS+mDODECAN+mAPB935+mdodapb))*100 % Весовая концентрация S11200 в суспензии с RED 176, додекан суспензии + жидким кристаллом + додекан добавленный
+
+XS11200_sum=((mS+mSS_boil)/(((rS*mLC)/rLC)+((rS*mRED176_boil)/rRED)+((rS*(mDOD_boil))/rDODECAN)+((rS*mS)/rS)+((rS*mSS_boil)/rS)+((rS*mDODECAN)/rDODECAN)+((rS*mAPB935)/rAPB935)+((rS*mdodapb)/rDODECAN)))*100  %Объемная концентрация S11200 в суспензии с RED 176, додекан суспензии + жидким кристаллом + додекан добавленный.
+
+IAPB935_sum=((mAPB935)/(mLC+mR_boil+mS+mDODECAN+mAPB935+mdodapb))*100 % Весовая концентрация S11200 в суспензии с RED 176, додекан суспензии + жидким кристаллом + додекан добавленный
+XAPB935_sum=((mAPB935)/(((rAPB935*mLC)/rLC)+((rAPB935*mRED176_boil)/rRED)+((rAPB935*(mDOD_boil))/rDODECAN)+((rAPB935*mS)/rS)+((rAPB935*mSS_boil)/rS)+((rAPB935*mDODECAN)/rDODECAN)+((rAPB935*mAPB935)/rAPB935)+((rAPB935*mdodapb)/rDODECAN)))*100  %Объемная концентрация S11200 в суспензии с RED 176, додекан суспензии + жидким кристаллом + додекан добавленный.
+
+
+Idodapb_sum=((mdodapb)/(mLC+mR_boil+mS+mDODECAN+mAPB935+mdodapb))*100 % Весовая концентрация S11200 в суспензии с RED 176, додекан суспензии + жидким кристаллом + додекан добавленный
+Xdodapb_sum=((mdodapb)/(((rDODECAN*mLC)/rLC)+((rDODECAN*mRED176_boil)/rRED)+((rDODECAN*(mDOD_boil))/rDODECAN)+((rDODECAN*mS)/rS)+((rDODECAN*mSS_boil)/rS)+((rDODECAN*mDODECAN)/rDODECAN)+((rDODECAN*mAPB935)/rAPB935)+((rDODECAN*mdodapb)/rDODECAN)))*100 
+
+mR_n=mSUMK*(Ired176/100)+mSUMK*(IDOD/100)+mSUMK*(IS11200_sv/100)   % Перепроверка веса суспензии красителя RED176+додекан+S11200
+mRED176_n=mSUMK*(Ired176/100)   % Вес нанокристаллита красителя RED176 после забора капиляром
+mSS_n=mSUMK*(IS11200_sv/100)   % Вес поверхностно-активного вещества S11200, который связан в суспензии красителя после забора капиляром
+mDOD_n=mSUMK*(IDOD/100)     % Вес додекана связанного в суспензии красителя, после забора капиляром части коллоида
+mDODECAN_n=mSUMK*(IDODECAN/100)  % Вес додекана добавленного в коллоид после забора капиляром части коллоида
+mLC_n=mSUMK*(ILC/100)   % Вес жидкого кристалла после забора части коллоида
+mS_n=mSUMK*(IS11200/100)    % Вес пава S11200 после забора капиляром части коллоида
+
+
+
+ISUM=Ired176+Idodecan_sum+ILC+IS11200_sum+IAPB935_sum+Idodapb_sum    % Сумарная весовая концентрация коллоида со множеством компонент.    !!!!!Должна быть всегда 100%.
+XSUM=Xred176+Xdodecan_sum+XLC+XS11200_sum+XAPB935_sum+Xdodapb_sum  % Сумарная объемная концентрация коллоида со множеством компонент.    !!!!!Должна быть всегда 100%.

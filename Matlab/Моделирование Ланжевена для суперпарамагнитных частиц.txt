@@ -1,0 +1,129 @@
+clear all;
+%close all;
+
+ % FileName = 'sample2.txt';   % Перемагниченность магнитной жидкости
+ % (выдержка в поле+заморозка при 173К) - ориентация перпендикулярно;
+%c = 1.2e-3;
+%V = 0.105096;
+%T = 173;
+ 
+%FileName = 'sample3.txt';    % Перемагниченность магнитной жидкости при комнатной температуре
+%c = 1.2e-3;
+%V = 0.105096;
+%T = 298;
+
+FileName = 'sample33.txt';    % Перемагниченность магнитной жидкости при комнатной температуре (обрезанный файл)
+c = 1.2e-3;
+V = 0.105096;
+T = 298;
+
+   %FileName = 'sample1.txt';     % Перемагниченность магнитной жидкости
+ % (выдержка в поле+заморозка при 173К) - ориентация параллельно;
+ %c = 1.2e-3;
+ %V = 0.105096;
+ %T = 173;
+ 
+ 
+A = dlmread(strcat('',FileName));
+x = A(1:(end-(length(A(:,1))+1)/2),1);
+x = x + 1e-7;
+y = A(1:(end-(length(A(:,1))+1)/2),2);
+figure(1);
+plot(x,y,'b.');
+title(FileName);
+
+op = fitoptions('Method','NonlinearLeastSquares',...
+    'StartPoint',[6e-3, 1e-3, 0]);
+f = fittype('a*(coth(b*(x+c))-1./(b*(x+c)))','options',op);
+g = fit(x,y,f);
+
+yf = g.a*(coth(g.b*(x+g.c))-1./(g.b*(x+g.c)));
+
+
+hold on;
+plot(x,yf,'r');
+hold off;
+grid on;
+
+fprintf(strcat('\n   ',FileName,'\n'));
+fprintf('T: %0.0f °K\n',T)
+fprintf('Saturation moment: %0.2e emu\n',g.a)
+fprintf('Volume of the sample: %0.3f cm3\n',V);
+
+fprintf('Magnetization of the suspension: %0.3f G\n',g.a/V);
+fprintf('concentration: %0.2e\n',c);
+
+fprintf('Magnetization of the material: %0.0f G\n',g.a/V/c);
+
+kT = (1.38e-16)*T;
+fprintf('moment of the marticle in average: %0.2e emu\n',g.b*kT);
+fprintf('diameter of the particle with Ms = 480 G: %0.1f nm\n',...
+  1e7*(6*g.b*kT/pi/480)^0.333);
+fprintf('diameter of the particle with Ms = %0.0f G: %0.1f nm\n',...
+  g.a/V/c,1e7*(6*g.b*kT/pi/(g.a/V/c))^0.333);
+
+j = 1;
+clear x2 y2;
+for i = 1:length(x)
+  if abs(y(i)) < 1e-2
+    x2(j) = x(i);
+    y2(j) = y(i);
+    j = j + 1;
+  end
+end
+ x2 = x2';
+ y2 = y2';
+ 
+figure(2);
+plot(x2,y2,'.');
+
+op = fitoptions('Method','NonlinearLeastSquares',...
+    'StartPoint',[g.b, g.c]);
+f2 = fittype('b*(x+c)/3','options',op);
+g2 = fit(x2,y2/g.a,f2);
+
+y2f = g.a*g2.b*(x2+g2.c)/3;
+hold on;
+plot(x2,y2f,'r');
+title('small H');
+hold off;
+
+fprintf('\n moment of the particle at small H: %0.2e emu\n',g2.b*kT);
+fprintf('diameter of the particle with Ms = 480 G: %0.1f nm\n',...
+  1e7*(6*g2.b*kT/pi/480)^0.333);
+fprintf('diameter of the particle with Ms = %0.0f G: %0.1f nm\n',...
+  g.a/V/c,1e7*(6*g2.b*kT/pi/(g.a/V/c))^0.333);
+%-------------------------
+
+
+j = 1;
+clear x3 y3;
+for i = 1:length(x)
+  if x(i) > 1000
+    x3(j) = x(i);
+    y3(j) = y(i);
+    j = j + 1;
+  end
+end
+ x3 = x3';
+ y3 = y3';
+ 
+figure(3);
+plot(x3,y3,'.');
+
+op = fitoptions('Method','NonlinearLeastSquares',...
+    'StartPoint',[g.a g.b]);
+f3 = fittype('a*(1-1/(b*x))','options',op);
+g3 = fit(x3,y3,f3);
+
+y3f = g3.a*(1-1./(g3.b*x3));
+hold on;
+plot(x3,y3f,'r');
+title('large H');
+hold off;
+
+fprintf('\n moment of the particle at large H: %0.2e emu\n',g3.b*kT);
+fprintf('diameter of the particle with Ms = 480 G: %0.1f nm\n',...
+  1e7*(6*g3.b*kT/pi/480)^0.333);
+fprintf('diameter of the particle with Ms = %0.0f G: %0.1f nm\n',...
+  g.a/V/c,1e7*(6*g3.b*kT/pi/(g.a/V/c))^0.333);

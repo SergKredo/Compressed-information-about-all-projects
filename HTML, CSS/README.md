@@ -1,3 +1,3 @@
 С данными технологиями взаимодействовал посредством среды разработки Adobe DreamVeawer. 
 Задача заключалась в создании 5-ти экземпляров сайтов по оказанию услуг(сиделки, ремонт техники). Активно применялась верстка и обратная связь с использованием JavaScript алгоритмов. Пришлось неплохо освоить SEO (оптимизацию сайтов) и держаться в 5-ке актуальных сайтов поисковика Google на примере сайта "сиделки.kiev.ua".
-К сожалению права по сайтам были переданы моему другу. Скрин передачи прав по ссылке: https://github.com/SergKredo/Compressed-information-about-all-projects/blob/master/HTML%2C%20CSS/xn--d1achcjf2b.JPG
+Права по сайтам были переданы моему другу. Скрин передачи прав по ссылке: https://github.com/SergKredo/Compressed-information-about-all-projects/blob/master/HTML%2C%20CSS/xn--d1achcjf2b.JPG
